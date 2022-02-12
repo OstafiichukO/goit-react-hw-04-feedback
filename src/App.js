@@ -11,27 +11,55 @@ class App extends Component {
     bad: 0,
   };
 
-  onGoodIncrement = () =>
-    this.setState({
-      good: this.state.good + 1,
-    });
+  onGoodIncrement = () => {
+    this.setState(prevState => ({
+      good: prevState.good + 1,
+    }));
+  };
 
-  onNeutralIncrement = () =>
-    this.setState({
-      neutral: this.state.neutral + 1,
-    });
+  onNeutralIncrement = () => {
+    this.setState(prevState => ({
+      neutral: prevState.neutral + 1,
+    }));
+  };
 
-  onBadIncrement = () =>
-    this.setState({
-      bad: this.state.bad + 1,
-    });
+  onBadIncrement = () => {
+    this.setState(prevState => ({
+      bad: prevState.bad + 1,
+    }));
+  };
 
   countTotalFeedback = () => {
-    return Object.values(this.state);
+    return Object.values(this.state).reduce((acc, item) => (acc += item), 0);
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    return (100 / this.countTotalFeedback()) * this.state.good;
   };
 
   render() {
-    return <Feedback />;
+    const total = this.countTotalFeedback();
+    const percentage = this.countPositiveFeedbackPercentage();
+    return (
+      <div>
+        <Section title="Please leave feedback">
+          <Feedback
+            onGoodIncrement={this.onGoodIncrement}
+            onNeutralIncrement={this.onNeutralIncrement}
+            onBadIncrement={this.onBadIncrement}
+          />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={total}
+            feedback={percentage}
+          />
+        </Section>
+      </div>
+    );
   }
 }
 

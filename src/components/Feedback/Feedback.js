@@ -1,13 +1,13 @@
-const Feedback = ({ onIncrementGood, onIncrementNeutral, onIncrementBad }) => {
+const Feedback = ({ onGoodIncrement, onNeutralIncrement, onBadIncrement }) => {
   return (
     <div>
-      <button type="button" onClick={onIncrementGood}>
+      <button type="button" onClick={onGoodIncrement}>
         Good
       </button>
-      <button type="button" onClick={onIncrementNeutral}>
+      <button type="button" onClick={onNeutralIncrement}>
         Neutral
       </button>
-      <button type="button" onClick={onIncrementBad}>
+      <button type="button" onClick={onBadIncrement}>
         Bad
       </button>
     </div>
