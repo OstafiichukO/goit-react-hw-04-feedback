@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { StyledDiv } from './Notification.styled';
 
 const Notification = ({ message }) => {
-  return <span>{message}</span>;
+  return <StyledDiv>{message}</StyledDiv>;
 };
 
 export default Notification;
