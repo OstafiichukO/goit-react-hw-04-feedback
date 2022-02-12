@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { StyledDiv, StyledButton } from './Feedback.styles';
+import { StyledDiv, StyledButton } from './Feedback.styled';
 
 const Feedback = ({ options, onLeaveFeedback }) => {
   return (
